@@ -1,0 +1,36 @@
+﻿@model TodoListModel
+
+@{
+    
+}
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="site.css">
+</head>
+<body>
+    <div class="todo-container">
+        <h1>Adicionar Tarefa</h1>
+        <div class="todo-input">
+            <input type="text" id="taskInput" placeholder="Adicione uma nova tarefa...">
+            @Html.ActionLink("Adicionar","Create", "TodoList",null,new {@class ="btn btn1"})
+        
+            @*  <button class="btn btn" id="addTaskBtn">Adicionar</button> *@
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+    
+</body>
+</html>
+
+
+
