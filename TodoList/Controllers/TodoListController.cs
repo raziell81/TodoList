@@ -6,7 +6,7 @@ namespace TodoList.Controllers
 {
     public class TodoListController : Controller
     {
-        private static List<Tasks> tasks = new ();
+        private static List<Task> tasks = new ();
         private static int nextId = 1;
         
         
