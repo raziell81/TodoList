@@ -40,6 +40,23 @@ h1 {
     margin-bottom: 20px;
 }
 
+@media print{
+    a, button{
+        display : none !important;
+    }
+    .col-acoes{
+        display : none;
+    }
+    table{
+        width : 100%;
+        border-collapse : collapse;
+    }
+   /* th, td{
+        border : 1px solid black;
+        padding : 5px;
+    }*/
+}
+
 input {
     flex: 1;
     padding: 10px;
@@ -93,7 +110,25 @@ input {
     background-color: #FF4500;
 }
 
+table{
+    
+    border-collapse : collapse;
+    table-layout : auto;
+}
+thead {
+    background-color: #f0f0f0;
+}
 
+    thead th {
+        
+        
+        font-weight: bold;
+        padding: 10px;
+        text-align: left;
+        white-space: nowrap;
+        text-transform: uppercase;
+        /*box-shadow: inset 0 -2px 0 rgba(0,0,0,0.1);*/
+    }
 .inline-lists {
     display: flex;
 }

@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<string>
+
+    <div class="printable-content">
+        <h1>Lista para impressão</h1>
+        <ul>
+    @foreach(var item in Model)
+    {
+        <li> @item</li>
+    }
+        </ul>
+    </div>
+
+  

@@ -1,16 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using TodoList.Models;
+using Rotativa;
 
 namespace TodoList.Controllers
 {
     public class TodoController : Controller
     {
-        private static List<TodoItem> lista = new List<TodoItem>();
+        private static List<TodoItem> list = new List<TodoItem>();
         private static int nextId = 1;
 
         public ActionResult Index()
         {
-            return View(lista);
+            return View(list);
         }
 
         [HttpGet]
@@ -20,11 +22,21 @@ namespace TodoList.Controllers
         }
 
         [HttpPost]
+        
         public ActionResult Create(TodoItem item)
         {
-            item.Id = nextId++;
-            lista.Add(item);
-            return RedirectToAction("Index");
+            if(item.Name != null)
+            {
+                item.Id = nextId++;
+                list.Add(item);
+              
+            }
+            else
+            {
+                return RedirectToAction("Create");    
+            }
+                return RedirectToAction("Index");
+
         }
 
         public ActionResult Edit()
@@ -36,7 +48,7 @@ namespace TodoList.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var item = lista.FirstOrDefault(x => x.Id == id);
+            var item = list.FirstOrDefault(x => x.Id == id);
             if (item == null)
                 return Index();
 
@@ -46,7 +58,7 @@ namespace TodoList.Controllers
         [HttpPost]
         public ActionResult Edit(TodoItem editedItem)
         {
-            var item = lista.FirstOrDefault(x => x.Id == editedItem.Id);
+            var item = list.FirstOrDefault(x => x.Id == editedItem.Id);
             if (item != null)
             {
                 item.Name = editedItem.Name;
@@ -59,12 +71,21 @@ namespace TodoList.Controllers
 
         public ActionResult Remove(int id)
         {
-            var item = lista.FirstOrDefault(x => x.Id == id);
+            var item = list.FirstOrDefault(x => x.Id == id);
             if (item != null)
-                lista.Remove(item);
+                list.Remove(item);
 
             return RedirectToAction("Index");
         }
+
+
+        public IActionResult PrintList(List<string> list)
+        {
+            return PartialView("_PrintList", list);
+        }
+
+
+
         //public IActionResult Index()
         //{
         //    return View();

@@ -1,21 +1,20 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
 
 @model List<TodoList.Models.TodoItem>
+
 
 <h2>Lista de Tarefas</h2>
 
 <a href="@Url.Action("Create")">Adicionar nova tarefa</a>
+
+<button onclick="window.print()">Imprimir Lista</button>
 
 <table>
     <thead>
         <tr>
             <th>ID</th>
             <th>Descrição</th>          
-            <th>Ações</th>
+            <th class="col-acoes"> Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +23,7 @@
             <tr>
                 <td>@item.Id</td>
                 <td>@item.Name</td>
+                <td class=" col-acoes"></td>
                
                 <td>
                     <a href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
